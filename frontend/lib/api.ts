@@ -65,3 +65,20 @@ export const toggleFavorite = async (id: string) => {
 
   return res.json();
 };
+
+export const deleteCity = async (cityId: string) => {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(
+    `http://localhost:5000/api/cities/${cityId}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token || "",
+      },
+    }
+  );
+
+  return res.json();
+};
